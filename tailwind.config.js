@@ -40,7 +40,7 @@ module.exports = {
       },
       backgroundImage: {
         'hero-pattern':
-          "url('https://i.ibb.co/MkvLDfb/Rectangle-4389.png')",
+          "url('https://www.fundacionmapfre.com.br/media/educacao-e-divulgacao/educacao-financeira-securitaria/seguros/protecao-segurado-1194x585-1.png')",
       },
     },
   },
