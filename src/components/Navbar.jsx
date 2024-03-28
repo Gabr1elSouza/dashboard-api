@@ -22,8 +22,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
         style={{ background: dotColor }}
         className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
       />
-        {icon}
-      
+      {icon}
     </button>
   </TooltipComponent>
 );
@@ -37,57 +36,56 @@ const Navbar = () => {
     handleClick,
     setScreenSize,
     screenSize,
+    currentColor,
   } = useStateContext();
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     handleResize();
 
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(()=>{
-    if(screenSize <= 900){
-      setActiveMenu(false)
+  useEffect(() => {
+    if (screenSize <= 900) {
+      setActiveMenu(false);
+    } else {
+      setActiveMenu(true);
     }
-    else{
-      setActiveMenu(true)
-    }
-  },[screenSize])
+  }, [screenSize]);
 
-  const handleActiveMenu = () =>setActiveMenu(!activeMenu)
+  const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
   return (
     <div className="flex justify-between p-2 md:mx-6 relative">
       <NavButton
         title="Menu"
         customFunc={handleActiveMenu}
-        color="blue"
+        color={currentColor}
         icon={<AiOutlineMenu />}
-        
       />
       <div className="flex">
         <NavButton
           title="Cart"
           customFunc={() => handleClick("cart")}
-          color="blue"
+          color={currentColor}
           icon={<FiShoppingCart />}
         />
         <NavButton
           title="Chart"
           dotColor="#03c9d7"
           customFunc={() => handleClick("chart")}
-          color="blue"
+          color={currentColor}
           icon={<BsChatLeft />}
         />
         <NavButton
           title="Notifications"
           dotColor="#03c9d7"
           customFunc={() => handleClick("notification")}
-          color="blue"
+          color={currentColor}
           icon={<RiNotification3Line />}
         />
         <TooltipComponent content="Profile" position="BottomCenter">
